@@ -103,16 +103,17 @@
         </div>
         <div class="gameArea "> </div>
     </div>
-
+    
     <script>
         const score=document.querySelector('.score');
         const startScreen=document.querySelector('.startScreen');
         const gameArea=document.querySelector('.gameArea');
-
+        var audio = new Audio('audio.wav');
+        
         startScreen.addEventListener('click',start);
 
         let player= {speed:10, score:0};
-
+        
         
         let keys={
             ArrowUp:false,
@@ -160,6 +161,7 @@
             startScreen.classList.remove('hide');
             startScreen.innerHTML="Game over <br> Your final score is "+player.score+" <br>Press here to restart game."
             player.start=false;
+            audio.pause();
         }
 
         function moveLines2(car){
@@ -191,6 +193,8 @@
 
 
             if(player.start==true){
+
+                audio.play();
 
                 moveLines();
                 moveLines2(car);
